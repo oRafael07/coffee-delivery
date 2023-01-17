@@ -77,7 +77,7 @@ export function Checkout() {
     inputDataWatch.neighborhood === '' ||
     inputDataWatch.postalCode === '' ||
     inputDataWatch.street === '' ||
-    (inputDataWatch.uf === '' && !cart.length > 0)
+    (inputDataWatch.uf === '' && cart.length > 0)
 
   console.log(cart.length)
 
