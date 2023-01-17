@@ -1,8 +1,12 @@
 import * as css from './styles'
 import Logo from '../../assets/logo.svg'
 import { ShoppingCart, MapPin } from 'phosphor-react'
+import { useContext } from 'react'
+import { CoffeeContext } from '../../contexts/CoffeeContext'
 
 export function Header() {
+  const { coffeeState } = useContext(CoffeeContext)
+
   return (
     <css.HeaderContainer>
       <img src={Logo} alt="Copo de café com um foguete decolando no meio" />
@@ -20,7 +24,9 @@ export function Header() {
             background="orange"
             textColor="#C47F17"
           >
-            <css.CounterCart>1</css.CounterCart>
+            {coffeeState.cart.length > 0 && (
+              <css.CounterCart>{coffeeState.cart.length}</css.CounterCart>
+            )}
             <ShoppingCart size={24} />
           </css.HeaderLink>
         </css.HeaderItem>

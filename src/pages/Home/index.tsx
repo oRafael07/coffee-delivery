@@ -3,6 +3,42 @@ import CoffeeImage from '../../assets/imagem.svg'
 import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
 import { CoffeeCard } from '../../components/CoffeeCard'
 
+export interface ICoffee {
+  id: number
+  title: string
+  description: string
+  tags: string[]
+  amount: number
+  image: string
+}
+
+const data: ICoffee[] = [
+  {
+    id: 1,
+    title: 'Expresso',
+    description: 'Cafe',
+    tags: ['Gelado'],
+    amount: 9.9,
+    image: './Coffee.svg',
+  },
+  {
+    id: 2,
+    title: 'Café Preto',
+    description: 'Cafe quente',
+    tags: ['Quente'],
+    amount: 9.9,
+    image: './Coffee.svg',
+  },
+  {
+    id: 3,
+    title: 'Café com leite',
+    description: 'Cafe quente com leite',
+    tags: ['Quente', 'Leite'],
+    amount: 10.9,
+    image: './Coffee.svg',
+  },
+]
+
 export function Home() {
   return (
     <css.HomeContainer>
@@ -54,10 +90,17 @@ export function Home() {
         <css.CoffeeContainer>
           <css.CoffeeListTitle>Nossos cafés</css.CoffeeListTitle>
           <css.CoffeeList>
-            <CoffeeCard />
-            <CoffeeCard />
-            <CoffeeCard />
-            <CoffeeCard />
+            {data.map((coffee) => (
+              <CoffeeCard
+                key={coffee.id}
+                id={coffee.id}
+                title={coffee.title}
+                description={coffee.description}
+                tags={coffee.tags}
+                amount={coffee.amount}
+                image={coffee.image}
+              />
+            ))}
           </css.CoffeeList>
         </css.CoffeeContainer>
       </section>
